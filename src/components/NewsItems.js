@@ -11,7 +11,9 @@ export class NewsItems extends Component {
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{description}</p>
-            <span class="badge text-bg-secondary">Published by {source}</span>
+            <span className="badge text-bg-secondary">
+              Published by {source}
+            </span>
 
             <p className="card-text">
               <small className="text-muted">
