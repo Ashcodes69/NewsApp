@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import News from "./components/News";
 
 export default class App extends Component {
-  pageSize = 10;
+  pageSize = 100;
   country = "us";
   render() {
     return (

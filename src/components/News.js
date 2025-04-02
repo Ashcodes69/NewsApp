@@ -15,16 +15,19 @@ export class News extends Component {
     pageSize: PropTypes.number,
     category: PropTypes.string,
   };
+  capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       page: 1,
       totalResults: 0,
       loading: true,
     };
+    document.title = `${this.capitalize(this.props.category)}--NewsApp`
   }
+
 
   async updateNews() {
     try {
@@ -65,7 +68,7 @@ export class News extends Component {
     return (
       <div className="container">
         <h1 className="text-center my-4" style={{ margin: "35px" }}>
-          Top Headlines
+          Top {this.capitalize(this.props.category)} Headlines
         </h1>
         {this.state.loading && <Spiner />}
         <div className="row">
