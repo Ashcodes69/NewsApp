@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import NewsItems from "./NewsItems";
 import Spinner from "./Spinner";
 
-const News = ({ country, category, pageSize, apiKey, setProgress }) => {
+const News = ({ country, category, pageSize, apiKey, setProgress, mode, toggleMode }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -18,7 +18,7 @@ const News = ({ country, category, pageSize, apiKey, setProgress }) => {
       try {
         setProgress(0);
         const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
-        
+
         setLoading(true);
         setProgress(30);
 
@@ -38,7 +38,7 @@ const News = ({ country, category, pageSize, apiKey, setProgress }) => {
     };
 
     updateNews();
-  }, [country, category, apiKey, pageSize, page, setProgress]); 
+  }, [country, category, apiKey, pageSize, page, setProgress]);
 
   const handlePreviousClick = () => {
     if (page > 1) setPage(page - 1);
@@ -50,7 +50,7 @@ const News = ({ country, category, pageSize, apiKey, setProgress }) => {
 
   return (
     <div className="container">
-      <h1 className="text-center my-4" style={{ margin: "35px" }}>
+      <h1 className="text-center" style={{ marginTop: "5rem" }}>
         Top {capitalize(category)} Headlines
       </h1>
       {loading && <Spinner />}
@@ -66,6 +66,8 @@ const News = ({ country, category, pageSize, apiKey, setProgress }) => {
                 author={element.author}
                 date={element.publishedAt}
                 source={element.source.name}
+                mode={mode}
+                toggleMode={toggleMode}
               />
             </div>
           ))}

@@ -7,13 +7,25 @@ import LoadingBar from "react-top-loading-bar";
 
 const App = () => {
   const [progress, setProgress] = useState(0);
+  const [mode, setMode] = useState("light");
   const apiKey = process.env.REACT_APP_NEWS_API;
   const pageSize = 10;
   const country = "us";
 
+  const toggleMode = () => {
+    if (mode === "light") {
+      setMode("dark");
+      document.body.style.backgroundColor = "#040F16";
+      document.body.style.color = "white";
+    } else if (mode === "dark") {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+    }
+  };
   return (
     <Router>
-      <Navbar />
+      <Navbar mode={mode} toggleMode={toggleMode} />
       <LoadingBar color="#28a745" progress={progress} />
       <Routes>
         <Route
@@ -26,6 +38,8 @@ const App = () => {
               apiKey={apiKey}
               pageSize={pageSize}
               country={country}
+              mode={mode}
+              toggleMode={toggleMode}
               category="general"
             />
           }
@@ -40,6 +54,8 @@ const App = () => {
               apiKey={apiKey}
               pageSize={pageSize}
               country={country}
+              mode={mode}
+              toggleMode={toggleMode}
               category="business"
             />
           }
@@ -54,6 +70,8 @@ const App = () => {
               apiKey={apiKey}
               pageSize={pageSize}
               country={country}
+              mode={mode}
+              toggleMode={toggleMode}
               category="entertainment"
             />
           }
@@ -68,6 +86,8 @@ const App = () => {
               apiKey={apiKey}
               pageSize={pageSize}
               country={country}
+              mode={mode}
+              toggleMode={toggleMode}
               category="technology"
             />
           }
@@ -82,6 +102,8 @@ const App = () => {
               apiKey={apiKey}
               pageSize={pageSize}
               country={country}
+              mode={mode}
+              toggleMode={toggleMode}
               category="health"
             />
           }
@@ -96,6 +118,8 @@ const App = () => {
               apiKey={apiKey}
               pageSize={pageSize}
               country={country}
+              mode={mode}
+              toggleMode={toggleMode}
               category="science"
             />
           }
@@ -110,6 +134,8 @@ const App = () => {
               apiKey={apiKey}
               pageSize={pageSize}
               country={country}
+              mode={mode}
+              toggleMode={toggleMode}
               category="sports"
             />
           }

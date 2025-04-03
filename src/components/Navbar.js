@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <div>
-        <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
-       <div className="container-fluid">
-         <Link className="navbar-brand" to="/">
-           NewsApp
-         </Link>
-         <button
+      <nav className={`navbar navbar-expand-lg bg-${props.mode==="light"?"light":"dark"} navbar-${props.mode==="light"?"light":"dark"} fixed-top`}>
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            NewsApp
+          </Link>
+          <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -63,9 +63,21 @@ export default function Navbar() {
                 </Link>
               </li>
             </ul>
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                onClick={props.toggleMode}
+              />
+              <label className="form-check-label" for="flexSwitchCheckDefault">
+              ${props.mode==="light"?"Enable dark mode":"Enable light mode"}
+              </label>           
+            </div>
           </div>
         </div>
       </nav>
     </div>
-  )
+  );
 }
