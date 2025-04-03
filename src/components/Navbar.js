@@ -1,10 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
+  const [query, setQuery] = useState("");
+
+  const navigate = useNavigate();
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query.trim() !== "") {
+      navigate(`/search/${query}`);
+      setQuery("");
+    }
+  };
   return (
     <div>
-      <nav className={`navbar navbar-expand-lg bg-${props.mode==="light"?"light":"dark"} navbar-${props.mode==="light"?"light":"dark"} fixed-top`}>
+      <nav
+        className={`navbar navbar-expand-lg bg-${
+          props.mode === "light" ? "light" : "dark"
+        } navbar-${props.mode === "light" ? "light" : "dark"} fixed-top`}
+      >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             NewsApp
@@ -20,6 +34,19 @@ export default function Navbar(props) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+          <form className="d-flex" role="search" onSubmit={handleSearch}>
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button className="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -71,9 +98,14 @@ export default function Navbar(props) {
                 id="flexSwitchCheckDefault"
                 onClick={props.toggleMode}
               />
-              <label className="form-check-label" for="flexSwitchCheckDefault">
-              ${props.mode==="light"?"Enable dark mode":"Enable light mode"}
-              </label>           
+              <label
+                className="form-check-label"
+                htmlFor="flexSwitchCheckDefault"
+              >
+                {props.mode === "light"
+                  ? "Enable dark mode"
+                  : "Enable light mode"}
+              </label>
             </div>
           </div>
         </div>

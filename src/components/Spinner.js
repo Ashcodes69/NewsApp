@@ -10,9 +10,9 @@ function Spiner() {
       >
         <span className="visually-hidden">Loading...</span>
       </div>
+      <span className="my-4">loading..</span>
     </div>
   );
 }
 
 export default Spiner;
-

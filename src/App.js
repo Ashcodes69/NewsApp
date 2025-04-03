@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import LoadingBar from "react-top-loading-bar";
+import SearchResults from "./components/SearchResults";
 
 const App = () => {
   const [progress, setProgress] = useState(0);
@@ -137,6 +138,16 @@ const App = () => {
               mode={mode}
               toggleMode={toggleMode}
               category="sports"
+            />
+          }
+        />
+        <Route
+          path="/search/:query"
+          element={
+            <SearchResults
+              apiKey={apiKey}
+              mode={mode}
+              setProgress={setProgress}
             />
           }
         />
