@@ -7,7 +7,6 @@ const SearchResults = ({ apiKey, mode, setProgress }) => {
   const { query } = useParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchSearchResults = async () => {
       setLoading(true);
@@ -30,9 +29,9 @@ const SearchResults = ({ apiKey, mode, setProgress }) => {
   }, [query, apiKey, setProgress]);
 
   return (
-    <div className="container my-4">
-      <h2 className="text-center">Search Results for "{query}"</h2>
+    <div className="container" style={{ marginTop: "5rem" }}>
       {loading && <Spiner></Spiner>}
+      <h2 className="text-center">Search Results for "{query}"</h2>
       {!loading && articles.length === 0 && (
         <h4 className="text-center">No results found.</h4>
       )}

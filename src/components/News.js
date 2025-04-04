@@ -3,7 +3,15 @@ import PropTypes from "prop-types";
 import NewsItems from "./NewsItems";
 import Spinner from "./Spinner";
 
-const News = ({ country, category, pageSize, apiKey, setProgress, mode, toggleMode }) => {
+const News = ({
+  country,
+  category,
+  pageSize,
+  apiKey,
+  setProgress,
+  mode,
+  toggleMode,
+}) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -50,9 +58,9 @@ const News = ({ country, category, pageSize, apiKey, setProgress, mode, toggleMo
 
   return (
     <div className="container">
-      <h1 className="text-center" style={{ marginTop: "5rem" }}>
+      <h2 className="text-center" style={{ marginTop: "5rem" }}>
         Top {capitalize(category)} Headlines
-      </h1>
+      </h2>
       {loading && <Spinner />}
       <div className="row">
         {!loading &&
@@ -75,7 +83,7 @@ const News = ({ country, category, pageSize, apiKey, setProgress, mode, toggleMo
       <div className="container d-flex justify-content-between">
         <button
           type="button"
-          className="btn btn-dark"
+          className="btn btn-outline-primary"
           onClick={handlePreviousClick}
           disabled={page <= 1}
         >
@@ -83,7 +91,7 @@ const News = ({ country, category, pageSize, apiKey, setProgress, mode, toggleMo
         </button>
         <button
           type="button"
-          className="btn btn-dark"
+          className="btn btn-outline-primary"
           onClick={handleNextClick}
           disabled={page + 1 > Math.ceil(totalResults / pageSize)}
         >

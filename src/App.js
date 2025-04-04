@@ -10,7 +10,7 @@ const App = () => {
   const [progress, setProgress] = useState(0);
   const [mode, setMode] = useState("light");
   const apiKey = process.env.REACT_APP_NEWS_API;
-  const pageSize = 10;
+  const pageSize = 100;
   const country = "us";
 
   const toggleMode = () => {
@@ -27,11 +27,11 @@ const App = () => {
   return (
     <Router>
       <Navbar mode={mode} toggleMode={toggleMode} />
-      <LoadingBar color="#28a745" progress={progress} />
+      <LoadingBar color="#00BFFF" progress={progress} height={3} />
       <Routes>
         <Route
           exact
-          path="/"
+          path="/general"
           element={
             <News
               setProgress={setProgress}

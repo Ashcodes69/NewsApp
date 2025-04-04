@@ -23,7 +23,7 @@ const NewsItems = (props) => {
           </p>
           <a
             href={newsUrl}
-            className="btn btn-sm btn-dark"
+            className="btn btn-sm btn-outline-info"
             target="_blank"
             rel="noopener noreferrer"
           >
