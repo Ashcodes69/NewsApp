@@ -111,7 +111,12 @@ export default function Navbar(props) {
                   aria-label="Search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  style={{ width: "17rem", marginLeft: "2rem" }}
+                  style={{
+                    width: "17rem",
+                    marginLeft: "2rem",
+                    backgroundColor: props.mode === "dark" ? "#808080" : "",
+                    color: props.mode === "dark" ? "white" : "",
+                  }}
                 />
                 <button className="btn btn-outline-info" type="submit">
                   Search
